@@ -1,0 +1,40 @@
+In this exercise you will use {bold}Mongoose{/bold} to connect to {bold}MongoDB{/bold} and create a simple blog post schema to store one entry in the database, retrieve it from the database and print it to the console. You will USE the database '{bold}test{/bold}' running on your localhost (127.0.0.1) in port 27017.
+
+A default layout for a NodeJS program that uses Mongoose is as follows and can be used as the basis for your answer:
+```
+var mongoose = require('mongoose');
+var db = mongoose.connection;
+
+db.on('error', console.error);
+db.once('open', function() {
+  // Create your schemas and models here.
+});
+
+mongoose.connect('mongodb://127.0.0.1:27017/test');
+```
+
+The two concepts that are most important in Mongoose are {blue}schemas{/blue} and {blue}models{/blue}. A schema is used to define the structure of a document within a collection, whilst a model is used to create an instance of data that will be stored in a specific document. In your solution include the follow code to create a schema and associate a collection in MongoDB with that type of document.
+
+```
+// Create a schema for a movie object with a title, numeric rating and a release year
+var movieSchema = new mongoose.Schema({
+  title: { type: String }
+, rating: Number
+, releaseYear: Number
+});
+
+// Associate a 'Movie' model using the movieSchema as the structure.
+// Mongoose will then create a MongoDB collection called 'Movies' for these documents. The capitalisation is important as this becomes the constructor function for creating new movie instances.
+var Movie = mongoose.model('Movie', movieSchema);
+```
+
+In this exercise, you will need to create and save a model representing the film "The LEGO Movie" (rating: 10 and releaseYear: 2014). You will need to instantiate a Movie model and use the {yellow}save{/yellow} function in mongoose to save this to the MongoDB database. You should echo the stored document to the console. A skeleton of this code is provided below.
+
+```
+var legoMovie = new Movie({title: "The LEGO Movie", rating: "10", releaseYear: "2014"});
+
+legoMovie.save(function(err, legoMovie) {
+    if (err) return console.error(err);
+    console.dir(legoMovie);
+});
+```
