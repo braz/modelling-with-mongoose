@@ -19,12 +19,15 @@ db.once('open', function() {
 
 	legoMovie.save(function(err, legoMovie) {
 	    if (err) return console.error(err);
+
+	    Movie.findOne({ title: "The LEGO Movie" }, {"_id": 0}, function(err, search_result) {
+			if (err) return console.error(err);
+			
+			console.dir(search_result);
+			mongoose.disconnect();
+		}); // Movie.findOne
 	}); // legoMovie.save
-	
-	Movie.findOne({ title: 'The LEGO Movie' }, {"_id": 0}, function(err, search_result) {
-	if (err) return console.error(err);
-	  console.dir(search_result);
-	}); // Movie.findOne
+
 }); // db.once
 
 mongoose.connect('mongodb://127.0.0.1:27017/test');
