@@ -1,4 +1,4 @@
-In this exercise you will use {bold}Mongoose{/bold} to connect to {bold}MongoDB{/bold} and create a simple blog post schema to store one entry in the database, retrieve it from the database and print it to the console. You will USE the database '{bold}test{/bold}' running on your localhost (127.0.0.1) in port 27017.
+In this exercise you will use {bold}Mongoose{/bold} to connect to {bold}MongoDB{/bold} and create a simple movie post schema to store one entry in the database, retrieve it from the database and print it to the console. You will USE the database '{bold}test{/bold}' running on your localhost (127.0.0.1) in port 27017.
 
 A default layout for a NodeJS program that uses Mongoose is as follows and can be used as the basis for your answer:
 ```
